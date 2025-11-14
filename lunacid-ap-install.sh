@@ -134,7 +134,7 @@ if [ ! -d "$GAME_DIR" ]; then
     elif command -v kdialog &>/dev/null; then
         GAME_DIR=$(kdialog --getexistingdirectory "$HOME" "Select the Lunacid game directory")
     else
-        read -rp "Enter path to Lunacid game directory: " GAME_DIR
+        read -rp "Enter path to Lunacid game directory: " GAME_DIR < /dev/tty
     fi
 fi
 
@@ -154,7 +154,7 @@ if [ -d "$PLUGIN_DIR" ]; then
     log_info "LunacidAPClient Manager"
     echo "1) Install/Update LunacidAPClient"
     echo "2) Uninstall LunacidAPClient"
-    read -rp "Select an option [1/2]: " ACTION
+    read -rp "Select an option [1/2]: " ACTION < /dev/tty
     if [ "$ACTION" = "2" ]; then
         log_info "Removing LunacidAPClient..."
         rm -rf "$PLUGIN_DIR"
@@ -174,7 +174,7 @@ echo "  WINEDLLOVERRIDES=\"winhttp.dll=n,b\" %command%"
 echo "2 Run protontricks → select Lunacid → (might take a while, ignore errors as long as it doesn't exit) Select the default wineprefix → Run winecfg → Libraries → New override for library → winhttp → Add → Apply"
 echo ""
 
-read -rp "Apply the override automatically now? [Y/n] " REPLY
+read -rp "Apply the override automatically now? [Y/n] " REPLY < /dev/tty
 REPLY=${REPLY:-Y}
 
 if [[ "$REPLY" =~ ^[Yy]$ ]]; then
@@ -189,7 +189,7 @@ if [[ "$REPLY" =~ ^[Yy]$ ]]; then
         elif command -v kdialog &>/dev/null; then
             PROTON_PREFIX=$(kdialog --getexistingdirectory "$HOME" "Select your Proton/Wine prefix directory")
         else
-            read -rp "Enter path to Proton/Wine prefix: " PROTON_PREFIX
+            read -rp "Enter path to Proton/Wine prefix: " PROTON_PREFIX < /dev/tty
         fi
     fi
 
@@ -260,7 +260,7 @@ for r in $(seq 0 $((ROWS - 1))); do
 done
 echo ""
 
-read -rp "Select version [ENTER for latest]: " INDEX
+read -rp "Select version [ENTER for latest]: " INDEX < /dev/tty
 INDEX=${INDEX:-0}
 
 if ! [[ "$INDEX" =~ ^[0-9]+$ ]] || [ "$INDEX" -ge "${#FILTERED_TAGS[@]}" ]; then
