@@ -15,13 +15,13 @@ Use the following install scripts to automatically install the Mod
 #### Windows
 
 ```ps1
-irm "https://github.com/Witchybun/LunacidAPClient/blob/main/lunacid-ap-install.ps1" | iex
+irm https://raw.githubusercontent.com/Witchybun/LunacidAPClient/main/lunacid-ap-install.ps1 | iex
 ```
 
 #### Linux
 
-```ps1
-curl -fsSL "https://github.com/Witchybun/LunacidAPClient/blob/main/lunacid-ap-install.sh" | sh
+```bash
+curl -fsSL https://raw.githubusercontent.com/Witchybun/LunacidAPClient/main/lunacid-ap-install.sh | sh
 ```
 
 ### Manual
